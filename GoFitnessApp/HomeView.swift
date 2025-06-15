@@ -14,7 +14,7 @@ struct HomeView: View {
     var body: some View {
         ScrollView (showsIndicators: false){
             VStack {
-                Text("Welcome to GoFitness")
+                Text("Welcome")
                     .font(.largeTitle)
                     .padding()
             }
@@ -53,19 +53,24 @@ struct HomeView: View {
                     }.padding(.bottom)
                     
                 }
-            }
-            Spacer()
+                Spacer()
+            
             
             ZStack{
                 ProgressCircleView(progress: $calories, color: .red, goal: 600)
+                ProgressCircleView(progress: $active, color: .blue, goal: 60)
                     .padding(.all,20)
-                ProgressCircleView(progress: $calories, color: .blue, goal: 600)
-                    .padding(.all,20)
-                ProgressCircleView(progress: $calories, color: .green, goal: 600)
-                    .padding(.all,20)
+                ProgressCircleView(progress: $stand, color: .green, goal: 12)
+                    .padding(.all,40)
              
+            }.padding(.horizontal)
+            
+            Spacer()
                 
             }
+            .padding()
+       
+            
         }
     }
     
