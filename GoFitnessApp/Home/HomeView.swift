@@ -19,21 +19,27 @@ struct HomeView: View {
         Activity(id: 2, title: "Today Steps", subtitle:"Goal 12,000", image: "figure.walk", tintColor: .blue, amount: "9,812"),
         Activity(id: 3, title: "Today Steps", subtitle:"Goal 50,000", image: "figure.walk", tintColor: .purple, amount: "55,812"),
     
-        
     ]
+    
+    var mockWorkouts = [ Workout(id: 0, title: "Running", image: "figure.run", duration: "51 mins", date: "Aug 1", calories: "812 kcal", tintColor: .black) ,
+                         Workout(id: 1, title: "Straight Training", image: "figure.run", duration: "51 mins", date: "Aug 11", calories: "812 kcal", tintColor: .red),
+                         Workout(id: 2, title: "Walk", image: "figure.run", duration: "5 mins", date: "Aug 1", calories: "812 kcal", tintColor: .cyan),
+                         Workout(id: 3, title: "Running", image: "figure.run", duration: "1 mins", date: "Aug 12", calories: "812 kcal", tintColor: .blue)
+                         
+]
     
     
     var body: some View {
         NavigationStack{
             ScrollView (showsIndicators: false){
+            
                 VStack {
-                    Spacer()
                     Text("Welcome")
                         .font(.largeTitle).bold()
                         .padding()
+                 
                 }
-                
-                
+               
                 HStack {
                     VStack() {
                         VStack(alignment: .leading, spacing: 8){
@@ -88,15 +94,7 @@ struct HomeView: View {
                 HStack {
                     Text("Fitness Activity").font(.title2).bold()
                     Spacer()
-                    Button {
-                        print("show more")
-                    } label: {
-                        Text("Show More")
-                            .padding(.all,10)
-                            .foregroundColor(.white)
-                            .background(Color.blue)
-                            .cornerRadius(20)
-                    }
+                    
                     
                 }
                 .padding(.horizontal)
@@ -106,13 +104,11 @@ struct HomeView: View {
                     ForEach(mockAcitivites,id: \.id) { activity in ActivittyCard ( activity: activity)
                         
                     }
-                    
-                    
+                }.padding(.horizontal)
                     
                     HStack {
                         Text("Recent Workouts").font(.title2).bold()
                         Spacer()
-                        
                         NavigationLink {
                             EmptyView()
                         } label: {
@@ -124,22 +120,27 @@ struct HomeView: View {
                             
                         }
                         
-                        
-                        
-                        
+                    }.padding(.horizontal)
+                    
+                    LazyVStack {
+                        ForEach(mockWorkouts,id: \.id) { workout in WorkoutCard ( workout: workout)
+                            
+                        }
                     }
                     
-                    
-                    
-                }.padding(.horizontal)
-                
-                
+                    .padding(.horizontal)
+                  
+                }
             }
         }
+        
     }
-    
-}
 
-        #Preview {
-    HomeView()
-}
+
+  
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
+        
+    }

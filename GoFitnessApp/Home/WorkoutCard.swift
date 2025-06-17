@@ -15,6 +15,7 @@ struct Workout{
     let duration : String
     let date : String
     let calories : String
+    let tintColor : Color
     
 }
 
@@ -28,14 +29,14 @@ struct WorkoutCard: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 48, height: 48)
-                .foregroundStyle(.green)
+                .foregroundStyle(workout.tintColor)
                 .padding()
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
             
             VStack(spacing:16){
                 HStack{
-                    Text("Running")
+                    Text(workout.title)
                         .font(.title3).bold(true)
                     
                     Spacer()
@@ -55,10 +56,17 @@ struct WorkoutCard: View {
                 }
                
             }
-        }.padding()
+        }.padding(.horizontal)
     }
 }
 
-#Preview {
-    WorkoutCard()
+//#Preview {
+  //  WorkoutCard(workout: <#Workout#>)
+//}
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        WorkoutCard(workout:Workout(id: 0, title: "Running", image: "figure.run", duration: "51 mins", date: "Today", calories: "812 kcal", tintColor: .cyan));
+    }
 }

@@ -25,7 +25,8 @@ struct GoFitnessAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            FitnessTabView()
         }
         .modelContainer(sharedModelContainer)
     }
