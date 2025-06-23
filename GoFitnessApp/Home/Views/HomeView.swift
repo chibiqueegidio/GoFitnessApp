@@ -15,9 +15,7 @@ struct HomeView: View {
         NavigationStack{
             ScrollView (showsIndicators: false){
 
-                Spacer()
-        
-                VStack {
+                VStack(alignment: .leading) {
                     Spacer()
                     Text("Welcome")
                         .font(.largeTitle).bold()
@@ -27,13 +25,14 @@ struct HomeView: View {
                 
 
                 HStack {
-                    VStack() {
+                    Spacer()
+                    VStack( alignment:.leading) {
                         VStack(alignment: .leading, spacing: 8){
                             Text("Colories")
                                 .font(.callout)
                                 .bold()
                                 .foregroundColor(.red)
-                            Text("123 kcal")
+                            Text("\(viewModel.calories)")
                                 .font(.callout)
                             
                         }.padding(.bottom)
@@ -43,7 +42,7 @@ struct HomeView: View {
                                 .font(.callout)
                                 .bold()
                                 .foregroundColor(.green)
-                            Text("52 Mins")
+                            Text("\(viewModel.active)")
                                 .font(.callout)
                             
                         }.padding(.bottom)
@@ -54,7 +53,7 @@ struct HomeView: View {
                                 .font(.callout)
                                 .bold()
                                 .foregroundColor(.blue)
-                            Text("8 hours")
+                            Text("\(viewModel.stand)")
                                 .font(.callout)
                             
                         }.padding(.bottom)
