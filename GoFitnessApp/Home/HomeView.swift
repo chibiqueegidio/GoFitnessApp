@@ -32,6 +32,7 @@ struct HomeView: View {
     var body: some View {
         NavigationStack{
             ScrollView (showsIndicators: false){
+
             
                 VStack {
                     Text("Welcome")
@@ -40,6 +41,16 @@ struct HomeView: View {
                  
                 }
                
+
+                VStack {
+                    Spacer()
+                    Text("Welcome")
+                        .font(.largeTitle).bold()
+                        .padding()
+                }
+                
+                
+
                 HStack {
                     VStack() {
                         VStack(alignment: .leading, spacing: 8){
@@ -95,6 +106,17 @@ struct HomeView: View {
                     Text("Fitness Activity").font(.title2).bold()
                     Spacer()
                     
+
+                    Button {
+                        print("show more")
+                    } label: {
+                        Text("Show More")
+                            .padding(.all,10)
+                            .foregroundColor(.white)
+                            .background(Color.blue)
+                            .cornerRadius(20)
+                    }
+
                     
                 }
                 .padding(.horizontal)
@@ -104,11 +126,14 @@ struct HomeView: View {
                     ForEach(mockAcitivites,id: \.id) { activity in ActivittyCard ( activity: activity)
                         
                     }
+
                 }.padding(.horizontal)
+
                     
                     HStack {
                         Text("Recent Workouts").font(.title2).bold()
                         Spacer()
+
                         NavigationLink {
                             EmptyView()
                         } label: {
@@ -120,6 +145,7 @@ struct HomeView: View {
                             
                         }
                         
+
                     }.padding(.horizontal)
                     
                     LazyVStack {
@@ -131,10 +157,22 @@ struct HomeView: View {
                     .padding(.horizontal)
                   
                 }
-            }
-        }
-        
+
+                        
+                        
+                        
+                    }
+                    
+                    
+                    
     }
+                
+                
+
+            }
+
+        
+
 
 
   
